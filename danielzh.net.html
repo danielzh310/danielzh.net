@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <title>danielzh.net</title>
+
+    <link rel="website icon" type="png"
+    href="/Users/class/Pictures/personal-icon2.png">
+
+<link rel="stylesheet" href="danielzh.net.css">
+<link rel="interactivity" href="danielzh.net.js">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <script src="danielzh.net.js"></script>
+    <div class="container">
+        <h1>WELCOME, MY NAME IS DANIEL</h1>
+	    <button 
+    	class="light-mode-button" 
+    	aria-label="Toggle Light Mode" 
+    	onclick="toggle_light_mode()">
+	        <span></span>
+	        <span></span>
+	</button> 
+    </div>
+    
+    <script>
+        function toggle_light_mode() {
+            var app = document.getElementsByTagName("BODY")[0];
+            if (localStorage.lightMode == "dark") {
+            localStorage.lightMode = "light";
+            app.setAttribute("light-mode", "light");
+            } else {
+            localStorage.lightMode = "dark";
+            app.setAttribute("light-mode", "dark");
+            }		
+        }
+    </script>
+</body>
+
+</html>
