@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <title>Daniel Zhu</title>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, 
+    shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    <link rel="shortcut icon" type="image/png" href="./assets/favicon.png"/>
+    
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <link rel="interactivity" type="text/js" href="danielzh.net.js">
+</head>
+
+<body>
+    <script src="index.js"></script>
+    <div class="container">
+        <button 
+        class="light-mode-button" 
+        aria-label="Toggle Light Mode" 
+        onclick="toggle_light_mode()">
+            <span></span>
+            <span></span>
+    </button> 
+    </div>
+    
+    <script>
+        function toggle_light_mode() {
+            var app = document.getElementsByTagName("BODY")[0];
+            if (localStorage.lightMode == "dark") {
+            localStorage.lightMode = "light";
+            app.setAttribute("light-mode", "light");
+            } else {
+            localStorage.lightMode = "dark";
+            app.setAttribute("light-mode", "dark");
+            }		
+        }
+    </script>
+</body>
+
+
+<body>
+<h1>
+    Hello 👋! I am Daniel Zhu.
+</h1>
+<div id="description">
+    <p>
+        Currently building electric race cars at
+        <a href="https://www.carnegiemellonracing.org/" id="cmr"> 
+        Carneige Mellon Racing</a> and conducting aerodynamic 
+        research with <a href="https://www.ansys.com/" id="ansys">
+        ANSYS</a>.
+    </p>
+    
+    <p>
+        I go to <a href="https://www.cmu.edu/" id="cmu">
+        Carneige Mellon University</a> studying for a BS in Statistics and Data 
+        Science. I use to run a nonprofit teaching music with 
+        <a href="https://dragonkimfoundation.org/fellowship/" id="dkf">
+        The Dragon Kim Foundation</a> and <a href="https://www.ocsarts.net/" 
+        id="ocsa">OCSA</a>, and taught sustainability to low income kids with
+        <a href="https://www.youtube.com/watch?v=LjYRrmJcheo" id="growing">
+        The Growing Tree</a>.
+    </p>
+
+    <p>
+        I have conducted driverless vehicles research at <a href=
+        "https://www.cs.cmu.edu/afs/cs/project/alv/www/" id="navlab">NavLab</a>,
+        front-end devoplment and market analysis for <a href="http://themeify.net/" 
+        id="tune">Tune</a> powered by <a href="https://developer.spotify.com/" 
+        id="spotify">Spotify</a>, business analysis and project management at 
+        <a href="https://www.kingston.com/en" id="king">Kingston</a>, vehicle 
+        dyanamics and track-side data analysis with 
+        <a href="https://www.mathworks.com/" id="matlab">MATLAB</a>, 
+        built internal tools using <a href="https://www.atlassian.com/" 
+        id="atlassian">Atlassian</a>, and started a marketing department for 
+        <a href="https://www.carnegiemellonracing.org/" id="cmr"> CMR</a>.
+    </p>
+        Want to know more about me? Just looking to get coffee? Reach out below!
+    <p>
+        
+    <p>
+
+    <p>
+        <a href="mailto:danielzh310@gmail.com" id="email">Email</a> //
+        <a href="assets/resume.pdf" id="resume">Resume</a> //
+        <a href="https://github.com/danielzh310">GitHub</a> //
+        <a href="https://www.instagram.com/classical_clarinet/" id="insta">
+            Instagram</a> //
+        <a href="https://www.linkedin.com/in/daniel-zhu-43a080213/" id="link">
+            LinkedIn</a>
+    </p>
+
+</div>
+</body>
+</html>
