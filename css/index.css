@@ -1,0 +1,160 @@
+/*Light Mode Button*/ 
+body {
+	background-color: #f6f6f6;
+    transition: background-color .3s;
+}
+
+body[light-mode=dark] {
+    background-color: #141516;
+    color: #ced4e2;
+}
+
+body[light-mode="dark"] .light-mode-button span:nth-child(1){
+    background-color: #ced4e2;
+    color: #141516;
+}
+
+body[light-mode=dark] .light-mode-button span:nth-child(2) {
+    left: 17px;
+    background-color: #141516;
+}
+
+
+body {
+    background-color: #F8F8F8;
+    font-family: 'Merriweather Sans', sans-serif;
+    margin-left: 10%;
+    max-width: 800px;
+    margin-right: 10%;
+    margin-top: 5%;
+}
+
+.light-mode-button {
+	background:0;
+	border: 0;
+	box-sizing: border-box;
+	cursor: pointer;
+	width: 30px;
+	height: 16px;
+	position: relative;
+	border: 1px solid rgba(255,255,255,0);
+	position: fixed;
+	top:16px;
+	right:16px;
+}
+
+.light-mode-button:focus {
+	outline:none; 
+}
+
+.light-mode-button span:nth-child(1) {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 30px;
+	height:16px;
+	background-color: #d6d7db;
+	border-radius: 9px;
+	box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
+	transition: .3s;
+}
+
+.light-mode-button span:nth-child(2) {
+	position: absolute;
+	top:3px;
+	left:3px;
+	width: 10px;
+	height: 10px;
+	background-color: #fff;
+	border-radius: 50%;
+	box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
+	transition: .3s;
+}
+
+/*Custom Font Colors*/ 
+
+h1 {
+    font-size: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    opacity: 0.35;
+}
+
+#description {
+    font-size: 20px;
+}
+
+#cmr {
+    color: #a0000f;
+}
+
+#ansys {
+    color: #ffb71b;
+}
+
+#cmu {
+    color: #b6022f;
+}
+
+#dkf {
+    color: #ee1c24;
+}
+
+#ocsa {
+    color: #8c52ff;
+}
+
+#growing {
+    color: #1e9614;
+}
+
+#navlab {
+    color: #878e76;
+}
+
+#tune {
+    color: #f36afa;
+}
+
+#spotify {
+    color: #1ed45e;
+}
+
+#king {
+    color: #c8122e;
+}
+
+#matlab {
+    color: #bf4d0f;
+}
+
+#atlassian {
+    color: #0050d3;
+}
+
+#email {
+    color: #d15b35;
+}
+
+#resume {
+    color: #e50214;
+}
+
+#github {
+    color: #010409;
+}
+
+#insta {
+    color: #e130bd;
+}
+
+#link {
+    color: #0e66c2;
+}
+
