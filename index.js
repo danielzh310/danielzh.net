@@ -133,6 +133,19 @@ Ty7cKfH1
     icon: "public/icons/starfield.ico",
     html: `<p><a href="https://github.com/danielzh310" target="_blank">Visit my GitHub</a></p>`,
   },
+  "fake-cli": {
+    title: "Command Prompt",
+    icon: "public/icons/AOL.ico",
+    html: `
+      <div id="cli-terminal" style="font-family:'Courier New', monospace; font-size:13px; color:#0f0; background:#000; padding:8px; height:100%; overflow-y:auto; display:flex; flex-direction:column;">
+        <div id="cli-output"></div>
+        <div style="display:flex; font-family:'Courier New', monospace; font-size:13px; color:#0f0;">
+          <span id="cli-prompt">C:\\Users\\Guest&gt; </span>
+          <input type="text" id="cli-input" style="background:black; border:none; color:#0f0; outline:none; flex:1; font-family:'Courier New', monospace; font-size:13px; color:#0f0;">
+        </div>
+      </div>
+    `
+  }
 };
 
 /* ================= Window / Tabs Manager ================= */
@@ -153,6 +166,10 @@ function focusWindow(key){
 
   document.querySelectorAll(".task-tab").forEach(t => t.classList.remove("active"));
   item.tab.classList.add("active");
+
+  // Focus CLI input automatically
+  const cliInput = document.getElementById("cli-input");
+  if(cliInput) cliInput.focus();
 }
 
 function minimizeWindow(key){
@@ -297,6 +314,36 @@ document.querySelectorAll(".icon").forEach((el) => {
     }
     openApp(app);
   });
+});
+
+/* ================= Start Button Behavior ================= */
+document.querySelector(".start-btn").addEventListener("click", () => {
+  openApp("fake-cli");
+});
+
+/* ================= CLI Terminal Interaction ================= */
+document.addEventListener("keydown", (e) => {
+  const cliInput = document.getElementById("cli-input");
+  if(!cliInput) return;
+
+  if(e.key === "Enter" && document.activeElement === cliInput) {
+    const value = cliInput.value.trim();
+    if(value === "") return;
+
+    const outputDiv = document.getElementById("cli-output");
+    const prompt = document.getElementById("cli-prompt").textContent;
+    outputDiv.innerHTML += `<div>${prompt}${value}</div>`;
+    outputDiv.scrollTop = outputDiv.scrollHeight;
+
+    // Send to email backend
+    fetch("/send-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: value })
+    }).catch(err => console.error("Failed to send:", err));
+
+    cliInput.value = "";
+  }
 });
 
 /* ================= Init ================= */
