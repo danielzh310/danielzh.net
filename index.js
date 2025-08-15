@@ -43,8 +43,12 @@ const APP_DEFS = {
     title: "Daniel",
     icon: "public/icons/agent.ico",
     html: `
-      <p>I am currently studying for a master's degree in Data Analytics at Carnegie Mellon University. Currently, I work as a network engineer at <a target="_blank" href="https://www.northropgrumman.com/">Northrop Grumman</a>. I have over half a decade's experience building driverless electric FSAE racecars, now I program satellites.</p>
-      <p>I love data science and am currently diving into other areas that excite me; network engineering, quantitative finance, autonomous vehicles, and space startups.</p>
+      <p>I am currently studying for a master's degree in Data Analytics at Carnegie Mellon University. 
+      I work as a network engineer at <a target="_blank" href="https://www.northropgrumman.com/">Northrop Grumman</a>. 
+      Outside of work, I have over half a decade of experience building driverless electric 
+      FSAE racecars — and now I program satellites for a living.</p>
+      <p>I love data science and am currently diving into other areas that excite me; network engineering, 
+      quantitative finance, autonomous vehicles, and space startups.</p>
       <h2>Academic Background</h2>
       <p>M.Sc. in Data Analytics for Science, Carnegie Mellon University (Graduating May 2026)</p>
       <p>B.Sc. in Statistics and Data Science, Carnegie Mellon University (May 2024)</p>
