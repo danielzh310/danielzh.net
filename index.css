@@ -1,182 +1,130 @@
-/* ============ Base + Desktop ============ */
-:root{
-  --win95-bg: #c1c1c1;
-  --title-active: #0b4fa2;          /* deep Win95 blue */
-  --title-inactive: #808080;
-  --window-shadow: #000;
-  --window-edge-dark: #000;         /* bottom/right */
-  --window-edge-light: #fff;        /* top/left */
-  --tab-fill: var(--win95-bg);
-  --tab-shadow: #9c9c9c;
-  --tab-highlight: #fff;
-  --text: #000;
-}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Daniel Zhu</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-*{box-sizing:border-box}
-html,body{height:100%;}
-body{
-  margin:0;
-  color:var(--text);
-  font: 14px/1.35 "MS Sans Serif", Tahoma, Verdana, system-ui, sans-serif;
-  overflow:hidden;
-}
+  <!-- Favicon -->
+  <link rel="icon" href="public/icons/favicon.png" type="image/png">
 
-.desktop{
-  position:fixed; inset:0 0 32px 0;    /* leave space for taskbar */
-  display:block;
-  background:#008080;                   /* will be overridden by JS palette */
-}
+  <!-- Social preview -->
+  <meta property="og:title" content="Daniel Zhu" />
+  <meta property="og:description" content="Windows 95–inspired personal site of Daniel Zhu." />
+  <meta property="og:image" content="https://danielzh.net/public/icons/main-link.png" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
 
-.icon-column{
-  position:absolute; left:10px; top:6px;
-  display:flex; flex-direction:column;
-  gap:18px; list-style:none; margin:0; padding:0;
-}
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    /* Auto-wrap icons into new columns, 32x32 icons */
+    .icon-column {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: calc(100vh - 60px); /* leave space for taskbar */
+      column-gap: 20px;
+    }
 
-.icon{
-  width:72px; height:64px;
-  display:flex; flex-direction:column; align-items:center; gap:6px;
-  cursor:default; user-select:none;
-}
-.icon img{ width:28px; height:28px; image-rendering: pixelated; }
-.icon p{
-  margin:0; padding:2px 3px; line-height:1.1; color:#fff; text-align:center;
-}
-.icon:focus-visible p,
-.icon.active p{
-  outline:1px dotted #fff;
-  background:#0b3b8d; border:1px dotted #fff;
-  border-radius:2px;
-}
+    .icon-column li {
+      list-style: none;
+      margin-bottom: 8px;
+      cursor: pointer;
+      width: 64px;
+      text-align: center;
+      font-size: 12px;
+    }
 
-/* ============ Window ============ */
-.window{
-  position:absolute;
-  width:700px; height:500px; background:var(--win95-bg);
-  border-left:1px solid var(--window-edge-light);
-  border-top:1px solid var(--window-edge-light);
-  border-right:2px solid var(--window-edge-dark);
-  border-bottom:2px solid var(--window-edge-dark);
-  box-shadow: 0 0 0 1px #7b7b7b inset;
-  overflow:hidden;
-}
+    .icon-column img {
+      width: 32px;
+      height: 32px;
+      display: block;
+      margin: 0 auto 4px auto;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+<body>
+  <!-- Desktop -->
+  <div id="desktop" class="desktop">
 
-.window .chrome{
-  position:absolute; inset:0;
-  border-left:2px solid #fff;
-  border-top:2px solid #fff;
-  border-right:2px solid #9c9c9c;
-  border-bottom:2px solid #9c9c9c;
-}
+    <!-- Left column desktop icons -->
+    <ul class="icon-column">
+      <li class="icon" data-app="my-computer">
+        <img src="public/icons/my-computer.ico" alt="">
+        <p>My Computer</p>
+      </li>
 
-.titlebar{
-  height:24px; display:flex; align-items:center; justify-content:space-between;
-  padding:0 6px; gap:8px; user-select:none; cursor:move;
-}
-.titlebar.inactive{ background:var(--title-inactive); }
-.titlebar.active  { background:var(--title-active); }
-.titlebar .left{display:flex; align-items:center; gap:6px;}
-.titlebar img{ width:17px; height:17px; image-rendering:pixelated; }
-.titlebar .title{
-  color:#fff; font-weight:bold; letter-spacing:.2px; margin:0;
-}
+      <li class="icon" data-app="daniel">
+        <img src="public/icons/agent.ico" alt="">
+        <p>Daniel</p>
+      </li>
 
-/* Menu row */
-.menubar{
-  display:flex; gap:12px; padding:2px 8px; background:transparent;
-  user-select:none;
-}
-.menubar span{
-  text-decoration:underline;
-  text-underline-offset:2px;
-  color:#000; opacity:.85; cursor:not-allowed; font-size:13px;
-}
+      <li class="icon" data-app="contact">
+        <img src="public/icons/letter.ico" alt="">
+        <p>Contact</p>
+      </li>
 
-/* Content area with 95 borders */
-.window-body{
-  position:absolute; inset:46px 6px 6px 6px; background:#fff; overflow:auto;
-  border-top:1px solid #000; border-left:1px solid #000;
-  border-right:1px solid #fff; border-bottom:1px solid #fff;
-  padding:0;
-}
-.window-inner{
-  height:100%; overflow:auto; padding:8px 10px;
-  border-top:1px solid #000; border-left:1px solid #000;
-  border-right:1px solid #9c9c9c; border-bottom:1px solid #9c9c9c;
-}
+      <li class="icon" data-app="projects">
+        <img src="public/icons/joy.ico" alt="">
+        <p>Projects</p>
+      </li>
 
-/* Win95 window buttons */
-.winbtns{ display:flex; align-items:center; gap:4px; }
-.winbtn{
-  width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center;
-  background:#d4d0c8;
-  border-left:2px solid #000; border-top:2px solid #000;
-  border-right:1px solid #fff; border-bottom:1px solid #fff;
-}
-.winbtn img{ width:10px; height:10px; image-rendering:pixelated; }
-.winbtn:active{
-  border-left:1px solid #fff; border-top:1px solid #fff;
-  border-right:2px solid #000; border-bottom:2px solid #000;
-}
+      <li class="icon" data-app="history">
+        <img src="public/icons/help-book.ico" alt="">
+        <p>History</p>
+      </li>
 
-/* ============ Taskbar ============ */
-.taskbar{
-  position:fixed; left:0; right:0; bottom:0; height:32px;
-  background:var(--win95-bg);
-  display:flex; align-items:center; gap:6px; padding:2px 6px;
-  border-top:2px solid #fff; box-shadow: inset 0 1px 0 #9c9c9c;
-}
+      <li class="icon" data-app="linkedin" data-href="https://www.linkedin.com/in/daniel-zhu-43a080213/">
+        <img src="public/icons/network.ico" alt="">
+        <p>Network</p>
+      </li>
 
-.start-btn{
-  display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
-  background:var(--win95-bg); cursor:pointer;
-  border-left:2px solid #000; border-top:2px solid #000;
-  border-right:1px solid #fff; border-bottom:1px solid #fff;
-}
-.start-btn img{ width:18px; height:18px; image-rendering:pixelated; }
-.start-btn:active{
-  border-left:1px solid #fff; border-top:1px solid #fff;
-  border-right:2px solid #000; border-bottom:2px solid #000;
-}
+      <li class="icon" data-app="github" data-href="https://github.com/danielzh310">
+        <img src="public/icons/starfield.ico" alt="">
+        <p>GitHub</p>
+      </li>
 
-.task-tabs{
-  display:flex; align-items:center; gap:6px; overflow-x:auto;
-  flex:1 1 auto; padding:2px 0;
-}
+      <!-- Commented out unused icons
+      <li class="icon" data-app="notion">
+        <img src="public/icons/book2.ico" alt="">
+        <p>Notion</p>
+      </li>
 
-/* Taskbar tab (95 look) */
-.task-tab{
-  display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
-  background:var(--tab-fill); cursor:pointer; user-select:none;
-  border-left:2px solid #fff; border-top:2px solid #fff;
-  border-right:2px solid #000; border-bottom:2px solid #000;
-  box-shadow: 1px 1px 0 0 var(--tab-shadow);
-}
-.task-tab img{ width:16px; height:16px; image-rendering:pixelated; }
-.task-tab span{ white-space:nowrap; }
+      <li class="icon" data-app="newsletter">
+        <img src="public/icons/mailbox.ico" alt="">
+        <p>Newsletter</p>
+      </li>
 
-.task-tab.active{
-  /* indented/pressed look */
-  border-left:2px solid #000; border-top:2px solid #000;
-  border-right:1px solid #fff; border-bottom:1px solid #fff;
-  box-shadow: none;
-  background:#fff;
-}
+      <li class="icon" data-app="bookshelf">
+        <img src="public/icons/book.ico" alt="">
+        <p>Bookshelf</p>
+      </li>
 
-/* Tray */
-.tray{ display:flex; align-items:center; gap:10px; }
-.tray-icon{ width:20px; height:20px; image-rendering:pixelated; }
-.clock{
-  display:inline-block; min-width:54px; text-align:center; padding:2px 8px;
-  border-left:2px solid #9c9c9c; border-top:2px solid #9c9c9c;
-  border-right:2px solid #fff; border-bottom:2px solid #fff;
-  background:#d4d0c8;
-}
+      <li class="icon" data-app="certificates">
+        <img src="public/icons/certificate.ico" alt="">
+        <p>Certificates</p>
+      </li>
+      -->
+    </ul>
 
-/* Basic typography inside windows */
-.window-inner h1, .window-inner h2 { margin:6px 0; }
-.window-inner p{ margin:6px 0; }
-.window-inner a{ color:#1a5fb4; text-decoration:underline; }
+    <!-- Windows live here -->
+    <div id="windows-root"></div>
+  </div>
 
-/* Selection stopping so dragging doesn't select text while moving */
-.noselect{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }
+  <!-- Taskbar -->
+  <div id="taskbar" class="taskbar">
+    <button class="start-btn">
+      <img src="public/icons/windows.ico" alt="">
+      <span>Start</span>
+    </button>
+    <div id="task-tabs" class="task-tabs" aria-label="Open Windows"></div>
+    <div class="tray">
+      <img class="tray-icon" src="public/icons/network.ico" alt="">
+      <time id="clock" class="clock">--:--</time>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
