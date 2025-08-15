@@ -1,0 +1,182 @@
+/* ============ Base + Desktop ============ */
+:root{
+  --win95-bg: #c1c1c1;
+  --title-active: #0b4fa2;          /* deep Win95 blue */
+  --title-inactive: #808080;
+  --window-shadow: #000;
+  --window-edge-dark: #000;         /* bottom/right */
+  --window-edge-light: #fff;        /* top/left */
+  --tab-fill: var(--win95-bg);
+  --tab-shadow: #9c9c9c;
+  --tab-highlight: #fff;
+  --text: #000;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;}
+body{
+  margin:0;
+  color:var(--text);
+  font: 14px/1.35 "MS Sans Serif", Tahoma, Verdana, system-ui, sans-serif;
+  overflow:hidden;
+}
+
+.desktop{
+  position:fixed; inset:0 0 32px 0;    /* leave space for taskbar */
+  display:block;
+  background:#008080;                   /* will be overridden by JS palette */
+}
+
+.icon-column{
+  position:absolute; left:10px; top:6px;
+  display:flex; flex-direction:column;
+  gap:18px; list-style:none; margin:0; padding:0;
+}
+
+.icon{
+  width:72px; height:64px;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  cursor:default; user-select:none;
+}
+.icon img{ width:28px; height:28px; image-rendering: pixelated; }
+.icon p{
+  margin:0; padding:2px 3px; line-height:1.1; color:#fff; text-align:center;
+}
+.icon:focus-visible p,
+.icon.active p{
+  outline:1px dotted #fff;
+  background:#0b3b8d; border:1px dotted #fff;
+  border-radius:2px;
+}
+
+/* ============ Window ============ */
+.window{
+  position:absolute;
+  width:700px; height:500px; background:var(--win95-bg);
+  border-left:1px solid var(--window-edge-light);
+  border-top:1px solid var(--window-edge-light);
+  border-right:2px solid var(--window-edge-dark);
+  border-bottom:2px solid var(--window-edge-dark);
+  box-shadow: 0 0 0 1px #7b7b7b inset;
+  overflow:hidden;
+}
+
+.window .chrome{
+  position:absolute; inset:0;
+  border-left:2px solid #fff;
+  border-top:2px solid #fff;
+  border-right:2px solid #9c9c9c;
+  border-bottom:2px solid #9c9c9c;
+}
+
+.titlebar{
+  height:24px; display:flex; align-items:center; justify-content:space-between;
+  padding:0 6px; gap:8px; user-select:none; cursor:move;
+}
+.titlebar.inactive{ background:var(--title-inactive); }
+.titlebar.active  { background:var(--title-active); }
+.titlebar .left{display:flex; align-items:center; gap:6px;}
+.titlebar img{ width:17px; height:17px; image-rendering:pixelated; }
+.titlebar .title{
+  color:#fff; font-weight:bold; letter-spacing:.2px; margin:0;
+}
+
+/* Menu row */
+.menubar{
+  display:flex; gap:12px; padding:2px 8px; background:transparent;
+  user-select:none;
+}
+.menubar span{
+  text-decoration:underline;
+  text-underline-offset:2px;
+  color:#000; opacity:.85; cursor:not-allowed; font-size:13px;
+}
+
+/* Content area with 95 borders */
+.window-body{
+  position:absolute; inset:46px 6px 6px 6px; background:#fff; overflow:auto;
+  border-top:1px solid #000; border-left:1px solid #000;
+  border-right:1px solid #fff; border-bottom:1px solid #fff;
+  padding:0;
+}
+.window-inner{
+  height:100%; overflow:auto; padding:8px 10px;
+  border-top:1px solid #000; border-left:1px solid #000;
+  border-right:1px solid #9c9c9c; border-bottom:1px solid #9c9c9c;
+}
+
+/* Win95 window buttons */
+.winbtns{ display:flex; align-items:center; gap:4px; }
+.winbtn{
+  width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center;
+  background:#d4d0c8;
+  border-left:2px solid #000; border-top:2px solid #000;
+  border-right:1px solid #fff; border-bottom:1px solid #fff;
+}
+.winbtn img{ width:10px; height:10px; image-rendering:pixelated; }
+.winbtn:active{
+  border-left:1px solid #fff; border-top:1px solid #fff;
+  border-right:2px solid #000; border-bottom:2px solid #000;
+}
+
+/* ============ Taskbar ============ */
+.taskbar{
+  position:fixed; left:0; right:0; bottom:0; height:32px;
+  background:var(--win95-bg);
+  display:flex; align-items:center; gap:6px; padding:2px 6px;
+  border-top:2px solid #fff; box-shadow: inset 0 1px 0 #9c9c9c;
+}
+
+.start-btn{
+  display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
+  background:var(--win95-bg); cursor:pointer;
+  border-left:2px solid #000; border-top:2px solid #000;
+  border-right:1px solid #fff; border-bottom:1px solid #fff;
+}
+.start-btn img{ width:18px; height:18px; image-rendering:pixelated; }
+.start-btn:active{
+  border-left:1px solid #fff; border-top:1px solid #fff;
+  border-right:2px solid #000; border-bottom:2px solid #000;
+}
+
+.task-tabs{
+  display:flex; align-items:center; gap:6px; overflow-x:auto;
+  flex:1 1 auto; padding:2px 0;
+}
+
+/* Taskbar tab (95 look) */
+.task-tab{
+  display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
+  background:var(--tab-fill); cursor:pointer; user-select:none;
+  border-left:2px solid #fff; border-top:2px solid #fff;
+  border-right:2px solid #000; border-bottom:2px solid #000;
+  box-shadow: 1px 1px 0 0 var(--tab-shadow);
+}
+.task-tab img{ width:16px; height:16px; image-rendering:pixelated; }
+.task-tab span{ white-space:nowrap; }
+
+.task-tab.active{
+  /* indented/pressed look */
+  border-left:2px solid #000; border-top:2px solid #000;
+  border-right:1px solid #fff; border-bottom:1px solid #fff;
+  box-shadow: none;
+  background:#fff;
+}
+
+/* Tray */
+.tray{ display:flex; align-items:center; gap:10px; }
+.tray-icon{ width:20px; height:20px; image-rendering:pixelated; }
+.clock{
+  display:inline-block; min-width:54px; text-align:center; padding:2px 8px;
+  border-left:2px solid #9c9c9c; border-top:2px solid #9c9c9c;
+  border-right:2px solid #fff; border-bottom:2px solid #fff;
+  background:#d4d0c8;
+}
+
+/* Basic typography inside windows */
+.window-inner h1, .window-inner h2 { margin:6px 0; }
+.window-inner p{ margin:6px 0; }
+.window-inner a{ color:#1a5fb4; text-decoration:underline; }
+
+/* Selection stopping so dragging doesn't select text while moving */
+.noselect{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none; }

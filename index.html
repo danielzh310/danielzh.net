@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Daniel Zhu</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="public/icons/favicon.png" type="image/png">
+
+  <link rel="stylesheet" href="index.css" />
+  <style>
+    /* Auto-wrap icons into new columns, 32x32 icons */
+    .icon-column {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      max-height: calc(100vh - 60px); /* leave space for taskbar */
+      column-gap: 20px;
+    }
+
+    .icon-column li {
+      list-style: none;
+      margin-bottom: 8px;
+      cursor: pointer;
+      width: 64px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .icon-column img {
+      width: 32px;
+      height: 32px;
+      display: block;
+      margin: 0 auto 4px auto;
+      image-rendering: pixelated;
+    }
+  </style>
+</head>
+<body>
+  <!-- Desktop -->
+  <div id="desktop" class="desktop">
+
+    <!-- Left column desktop icons -->
+    <ul class="icon-column">
+      <li class="icon" data-app="my-computer">
+        <img src="public/icons/my-computer.ico" alt="">
+        <p>My Computer</p>
+      </li>
+
+      <li class="icon" data-app="daniel">
+        <img src="public/icons/agent.ico" alt="">
+        <p>Daniel</p>
+      </li>
+
+      <li class="icon" data-app="contact">
+        <img src="public/icons/letter.ico" alt="">
+        <p>Contact</p>
+      </li>
+
+      <li class="icon" data-app="projects">
+        <img src="public/icons/joy.ico" alt="">
+        <p>Projects</p>
+      </li>
+
+      <li class="icon" data-app="history">
+        <img src="public/icons/help-book.ico" alt="">
+        <p>History</p>
+      </li>
+
+      <li class="icon" data-app="linkedin" data-href="https://www.linkedin.com/in/daniel-zhu-43a080213/">
+        <img src="public/icons/network.ico" alt="">
+        <p>Network</p>
+      </li>
+
+      <li class="icon" data-app="github" data-href="https://github.com/danielzh310">
+        <img src="public/icons/starfield.ico" alt="">
+        <p>GitHub</p>
+      </li>
+
+      <!-- Commented out icons for potential future use
+      <li class="icon" data-app="notion">
+        <img src="public/icons/book2.ico" alt="">
+        <p>Notion</p>
+      </li>
+
+      <li class="icon" data-app="newsletter">
+        <img src="public/icons/mailbox.ico" alt="">
+        <p>Newsletter</p>
+      </li>
+
+      <li class="icon" data-app="bookshelf">
+        <img src="public/icons/book.ico" alt="">
+        <p>Bookshelf</p>
+      </li>
+
+      <li class="icon" data-app="certificates">
+        <img src="public/icons/certificate.ico" alt="">
+        <p>Certificates</p>
+      </li>
+      -->
+    </ul>
+
+    <!-- Windows live here -->
+    <div id="windows-root"></div>
+  </div>
+
+  <!-- Taskbar -->
+  <div id="taskbar" class="taskbar">
+    <button class="start-btn">
+      <img src="public/icons/windows.ico" alt="">
+      <span>Start</span>
+    </button>
+    <div id="task-tabs" class="task-tabs" aria-label="Open Windows"></div>
+    <div class="tray">
+      <img class="tray-icon" src="public/icons/network.ico" alt="">
+      <time id="clock" class="clock">--:--</time>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
