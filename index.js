@@ -129,16 +129,26 @@ Ty7cKfH1
     <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
       <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] blurbable.com</div>
       <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
-        Generative-AI writing prompt tool that produces blurbs & headlines. <a href="https://blurbable.com" target="_blank">Visit website</a>
+        A web-only Python-based social messaging app reminiscent of Twitter but completely browser-native. <a href="https://blurbable.com" target="_blank">Visit website</a>
       </div>
     </div>
 
     <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
-      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] Carnegie Mellon Racing</div>
+      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] Carnegie Mellon Racing (2020-2024)</div>
       <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
-        Lead systems integration for an autonomous electric racecar in the FSAE Driverless league.
-      </div>
+
+      <p><strong>Aerodynamics & Composites System Lead (2024):</strong> Led aerodynamics and composites research, analyzing CFD and FEA results to optimize designs, select material layups, and manage composite manufacturing processes that significantly improved drag and downforce performance.</p>
+    
+      <p><strong>Driver Interface System Engineer (2024):</strong> Designed ergonomic driver interfaces and dashboard housings, integrating critical systems while refining control layouts for better usability, connectivity, and reduced driver fatigue.</p>
+
+      <p><strong>Vehicle Dynamics Data Analyst (2023):</strong> Oversaw vehicle dynamics testing and system integration for an autonomous electric racecar, leading on-track validation of performance, recommending design improvements, and coordinating real-time adjustments with cross-functional teams to boost reliability and responsiveness.</p>
+
+      <p><strong>Autonomous Vehicle Software Testing Engineer (2022-2023):</strong> Developed Python-based machine learning models to support autonomy testing and data analytics workflows — improving cone box prediction performance and enabling deeper in-house software validation during testing cycles.</p>
+    
+      <p><strong>Vice President of Marketing & Outreach (2021-2023):</strong> Drove marketing and outreach efforts as a team lead — producing crowdfunding campaigns, growing recruitment pipelines across campus organizations, and delivering media content that strengthened brand visibility and fundraising outcomes.</p>
+
     </div>
+</div>
 
     <!--
     <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
