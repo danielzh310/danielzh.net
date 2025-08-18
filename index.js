@@ -114,15 +114,54 @@ Ty7cKfH1
     `,
   },
   "projects": {
-    title: "Projects",
-    icon: "public/icons/joy.ico",
-    html: `<h2 class="noselect">Selected Hobby Projects</h2><p>Carnegie Mellon Racing, robin-algo.ai, blurbable.com, etc.</p>`,
-  },
+  title: "Projects",
+  icon: "public/icons/joy.ico",
+  html: `
+    <h2 class="noselect">Selected Hobby Projects</h2>
+
+    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] robin-algo.ai</div>
+      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+        Lightweight Robinhood algorithmic trading client. <a href="https://github.com/danielzh310/robin-algo.ai" target="_blank">View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] blurbable.com</div>
+      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+        Generative-AI writing prompt tool that produces blurbs & headlines. <a href="https://blurbable.com" target="_blank">Visit website</a>
+      </div>
+    </div>
+
+    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] Carnegie Mellon Racing</div>
+      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+        Lead systems integration for an autonomous electric racecar in the FSAE Driverless league.
+      </div>
+    </div>
+
+    <!--
+    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] project-name</div>
+      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+        Description and link here.
+      </div>
+    </div>
+    -->
+  `
+},
   "history": {
     title: "History",
     icon: "public/icons/help-book.ico",
-    html: `<p>Timeline-style notes about my career, published work, data science, and time at university.</p>`,
-  },
+    html: `
+      <h2 class="noselect">Timeline</h2>
+      <ul style="list-style:disc;padding-left:20px;margin-top:8px;">
+       <li><b>2020 – 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
+       <li><b>2024 – 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
+        <li><b>2025 – 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
+     </ul>
+  `
+},
   "network": {
     title: "Network",
     icon: "public/icons/network.ico",
@@ -354,3 +393,17 @@ document.addEventListener("DOMContentLoaded", () => {
   openApp("my-computer");
   openApp("daniel");
 });
+
+/* Attach dropdown behavior for Projects window */
+document.addEventListener("click", function(e){
+  if(e.target.classList.contains("toggle")){
+    const body = e.target.nextElementSibling;
+    const isOpen = body.style.display === "block";
+    body.style.display = isOpen ? "none" : "block";
+
+    // Preserve full title and just swap `[+]` / `[-]`
+    e.target.dataset.name = e.target.dataset.name || e.target.textContent.slice(4).trim();
+    e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
+  }
+});
+
