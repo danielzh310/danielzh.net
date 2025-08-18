@@ -23,7 +23,7 @@ body{
 .desktop{
   position:fixed; inset:0 0 32px 0;    /* leave space for taskbar */
   display:block;
-  background:#008080;                   /* will be overridden by JS palette */
+  background:#008080;                   /* will be overridden by JS */
 }
 
 .icon-column{
@@ -41,6 +41,15 @@ body{
 .icon p{
   margin:0; padding:2px 3px; line-height:1.1; color:#fff; text-align:center;
 }
+
+/* Hover highlight for desktop icons */
+.icon:hover p{
+  background:#0b3b8d;
+  outline:1px dotted #fff;
+  border:1px dotted #fff;
+  border-radius:2px;
+}
+
 .icon:focus-visible p,
 .icon.active p{
   outline:1px dotted #fff;
@@ -109,8 +118,7 @@ body{
 .winbtn{
   width:20px; height:20px; display:inline-flex; align-items:center; justify-content:center;
   background:#d4d0c8;
-  cursor:pointer; /* <--- added so hover shows finger */
-  /* default = raised */
+  cursor:pointer;
   border-left:2px solid #fff;
   border-top:2px solid #fff;
   border-right:2px solid #000;
@@ -118,7 +126,6 @@ body{
 }
 .winbtn img{ width:10px; height:10px; image-rendering:pixelated; }
 .winbtn:active{
-  /* clicked = sunken */
   border-left:2px solid #000;
   border-top:2px solid #000;
   border-right:2px solid #fff;
@@ -133,13 +140,23 @@ body{
   border-top:2px solid #fff; box-shadow: inset 0 1px 0 #9c9c9c;
 }
 
-/* Start button (raised by default) */
 .start-btn{
   display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
   background:var(--win95-bg); cursor:pointer;
   border-left:2px solid #fff; border-top:2px solid #fff;
   border-right:2px solid #000; border-bottom:2px solid #000;
 }
+
+/* Hover highlight for Start button */
+.start-btn:hover{
+  background:#0b3b8d;
+  color:#fff;
+  border-left:2px solid #fff;
+  border-top:2px solid #fff;
+  border-right:2px solid #000;
+  border-bottom:2px solid #000;
+}
+
 .start-btn:active{
   border-left:2px solid #000; border-top:2px solid #000;
   border-right:2px solid #fff; border-bottom:2px solid #fff;
@@ -161,6 +178,16 @@ body{
 }
 .task-tab img{ width:16px; height:16px; image-rendering:pixelated; }
 .task-tab span{ white-space:nowrap; }
+
+/* Hover highlight for taskbar tabs (only if not active) */
+.task-tab:hover:not(.active){
+  background:#0b3b8d;
+  color:#fff;
+  border-left:2px solid #fff;
+  border-top:2px solid #fff;
+  border-right:2px solid #000;
+  border-bottom:2px solid #000;
+}
 
 .task-tab.active{
   border-left:2px solid #000; border-top:2px solid #000;
