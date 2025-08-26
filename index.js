@@ -43,8 +43,8 @@ const APP_DEFS = {
     title: "Daniel",
     icon: "public/icons/agent.ico",
     html: `
-      <p>I am currently studying for a master's degree in Data Analytics at Carnegie Mellon University. 
-      I work as a network engineer at <a target="_blank" href="https://www.northropgrumman.com/">Northrop Grumman</a>. 
+      <p>I am currently studying for a master's degree in Data Analytics at Carnegie Mellon University but
+      I also work as a network engineer at <a target="_blank" href="https://www.northropgrumman.com/">Northrop Grumman</a>. 
       Outside of work, I have over half a decade of experience building driverless electric 
       FSAE racecars — and now I program satellites for a living.</p>
       <p>I love data science and am currently diving into other areas that excite me; network engineering, 
@@ -416,4 +416,5 @@ document.addEventListener("click", function(e){
     e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
+
 
