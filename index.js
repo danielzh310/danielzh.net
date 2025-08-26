@@ -166,9 +166,10 @@ Ty7cKfH1
     html: `
       <h2 class="noselect">Timeline</h2>
       <ul style="list-style:disc;padding-left:20px;margin-top:8px;">
+       <li><b>2015 – 2020:</b> Instrumental Music - Clarinet, Orange County School of the Arts</li>
        <li><b>2020 – 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
        <li><b>2024 – 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
-        <li><b>2025 – 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
+       <li><b>2025 – 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
      </ul>
   `
 },
@@ -416,5 +417,6 @@ document.addEventListener("click", function(e){
     e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
+
 
 
