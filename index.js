@@ -129,7 +129,8 @@ Ty7cKfH1
     <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
       <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] blurbable.com</div>
       <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
-        A web-only Python-based social messaging app reminiscent of Twitter but completely browser-native. <a href="https://blurbable.com" target="_blank">Visit website</a>
+        A career-focused social networking application where people share quick updates, funny work stories, and real human career moments, think LinkedIn, but without the corporate fluff. 
+        <a href="https://blurbable.com" target="_blank">Visit website</a>
       </div>
     </div>
 
@@ -417,6 +418,7 @@ document.addEventListener("click", function(e){
     e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
+
 
 
 
