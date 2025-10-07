@@ -138,15 +138,15 @@ Ty7cKfH1
       <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] Carnegie Mellon Racing (2020-2024)</div>
       <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
 
-      <p><strong>Aerodynamics & Composites System Lead (2024):</strong> Led aerodynamics and composites research, analyzing CFD and FEA results to optimize designs, select material layups, and manage composite manufacturing processes that significantly improved drag and downforce performance.</p>
+      <p><strong>Aerodynamics & Composites System Lead (2024):</strong> I led aerodynamics and composites research, worked on CFD and FEA results to design more aerodynamically optimized parts, selected materials for layups, and pretty much built a majority of the aerodynamics package for CMR 24e.</p>
     
-      <p><strong>Driver Interface System Engineer (2024):</strong> Designed ergonomic driver interfaces and dashboard housings, integrating critical systems while refining control layouts for better usability, connectivity, and reduced driver fatigue.</p>
+      <p><strong>Driver Interface System Engineer (2024):</strong> Designed and built a dashboard for CMR 24e, integrated conceptual driver interface housings for better usability, connectivity and just trying to make the drivers' lives a little less stressful in the cockpit.</p>
 
-      <p><strong>Vehicle Dynamics Data Analyst (2023):</strong> Oversaw vehicle dynamics testing and system integration for an autonomous electric racecar, leading on-track validation of performance, recommending design improvements, and coordinating real-time adjustments with cross-functional teams to boost reliability and responsiveness.</p>
+      <p><strong>Vehicle Dynamics Data Analyst (2023):</strong> Oversaw vehicle dynamics testing and analyzed CMR 23e's vehicle data to see where we could make design improvements, led on-track validation of aerodynamic performance, and also spun up a training regime for better coordination of real-time adjustments with cross-functional teams during high stress environments like competition.</p>
 
-      <p><strong>Autonomous Vehicle Software Testing Engineer (2022-2023):</strong> Developed Python-based machine learning models to support autonomy testing and data analytics workflows — improving cone box prediction performance and enabling deeper in-house software validation during testing cycles.</p>
+      <p><strong>Autonomous Vehicle Software Testing Engineer (2022-2023):</strong> Developed Python-based machine learning models to support autonomy testing and data analytics workflows, made improvements to cone box prediction performance and enabling deeper in-house data pipeline validation during testing cycles.</p>
     
-      <p><strong>Vice President of Marketing & Outreach (2021-2023):</strong> Drove marketing and outreach efforts as a team lead — producing crowdfunding campaigns, growing recruitment pipelines across campus organizations, and delivering media content that strengthened brand visibility and fundraising outcomes.</p>
+      <p><strong>Vice President of Marketing & Outreach (2021-2023):</strong> I started on the team as a business student, joined the team on the premise of improving outreaching efforts; ended up building up a substantial marking department-producing crowdfunding campaigns, designing limited edition merchandise drops, grew recruitment pipelines across campus organizations, and built up the CMR brand on campus to something other than being known as a nerdy engineering club but as a powerhouse race team that ranked 1st in the nation and 8th in the world during my tenure.</p>
 
     </div>
 </div>
@@ -418,6 +418,7 @@ document.addEventListener("click", function(e){
     e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
+
 
 
 
