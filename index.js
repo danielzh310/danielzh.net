@@ -50,7 +50,7 @@ const APP_DEFS = {
       <p>I love data science and am currently diving into other areas that excite me; network engineering, 
       quantitative finance, autonomous vehicles, and space startups.</p>
       <h2>Academic Background</h2>
-      <p>M.Sc. in Data Analytics for Science, Carnegie Mellon University (Graduating May 2026)</p>
+      <p>M.Sc. in Data Analytics for Science, Carnegie Mellon University (May 2026)</p>
       <p>B.Sc. in Statistics and Data Science, Carnegie Mellon University (May 2024)</p>
     `,
   },
@@ -167,10 +167,11 @@ Ty7cKfH1
     html: `
       <h2 class="noselect">Timeline</h2>
       <ul style="list-style:disc;padding-left:20px;margin-top:8px;">
-       <li><b>2015 – 2020:</b> Instrumental Music - Clarinet, Orange County School of the Arts</li>
-       <li><b>2020 – 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
-       <li><b>2024 – 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
-       <li><b>2025 – 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
+       <li><b>2015 - 2020:</b> Instrumental Music - Clarinet, Orange County School of the Arts</li>
+       <li><b>2020 - 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
+       <li><b>2024 - 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
+       <li><b>2025 - 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
+       <li><b>2026 - Present:</b> Technical Support Engineer, IBM (Austin, TX)</li>
      </ul>
   `
 },
