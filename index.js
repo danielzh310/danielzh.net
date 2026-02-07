@@ -171,7 +171,7 @@ Ty7cKfH1
        <li><b>2020 - 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
        <li><b>2024 - 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
        <li><b>2025 - 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
-       <li><b>2026 - Present:</b> Technical Support Engineer, IBM (Austin, TX)</li>
+       <li><b>2026 - Present:</b> Technical Support Engineer @ IBM (Austin, TX)</li>
      </ul>
   `
 },
