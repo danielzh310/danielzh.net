@@ -1,4 +1,4 @@
-/* ============ Base + Desktop ============ */
+/*  Base + Desktop  */
 :root{
   --win95-bg: #c1c1c1;
   --title-active: #0b4fa2;
@@ -73,7 +73,7 @@ body{
   border-radius:2px;
 }
 
-/* ============ Window ============ */
+/*  Window  */
 .window{
   position:absolute;
   width:700px; height:500px; background:var(--win95-bg);
@@ -137,7 +137,7 @@ body{
   border-right:2px solid #fff; border-bottom:2px solid #fff;
 }
 
-/* ============ Taskbar ============ */
+/*  Taskbar  */
 .taskbar{
   position:fixed; left:0; right:0; bottom:0; height:32px;
   background:var(--win95-bg);

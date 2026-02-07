@@ -1,4 +1,4 @@
-/* ================= Background Palette ================= */
+/* Background Palette */
 const WALLPAPER_COLORS = [
   "#CB7876",
   "#8BA47C",
@@ -12,7 +12,7 @@ function setRandomWallpaper() {
   document.querySelector(".desktop").style.background = c;
 }
 
-/* ================= Utilities ================= */
+/* Utilities */
 let zCounter = 10;
 function nextZ() { return ++zCounter; }
 
@@ -23,7 +23,7 @@ function nowClock() {
 }
 setInterval(nowClock, 1000);
 
-/* ================= App Content ================= */
+/* App Content */
 const APP_DEFS = {
   "my-computer": {
     title: "My Computer",
@@ -199,7 +199,7 @@ Ty7cKfH1
   }
 };
 
-/* ================= Window / Tabs Manager ================= */
+/* Window / Tabs Manager */
 const windowsRoot = document.getElementById("windows-root");
 const tabsRoot = document.getElementById("task-tabs");
 const openWindows = new Map();
@@ -354,7 +354,7 @@ function openApp(key){
   focusWindow(key);
 }
 
-/* ================= Desktop icon behavior ================= */
+/* Desktop icon behavior */
 document.querySelectorAll(".icon").forEach((el) => {
   el.addEventListener("click", (e) => {
     const href = el.dataset.href;
@@ -367,12 +367,12 @@ document.querySelectorAll(".icon").forEach((el) => {
   });
 });
 
-/* ================= Start Button Behavior ================= */
+/* Start Button Behavior */
 document.querySelector(".start-btn").addEventListener("click", () => {
   openApp("fake-cli");
 });
 
-/* ================= CLI Terminal Interaction ================= */
+/* CLI Terminal Interaction */
 document.addEventListener("keydown", (e) => {
   const cliInput = document.getElementById("cli-input");
   if(!cliInput) return;
@@ -397,7 +397,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-/* ================= Init ================= */
+/* Init */
 document.addEventListener("DOMContentLoaded", () => {
   setRandomWallpaper();
   nowClock();
