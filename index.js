@@ -151,11 +151,11 @@ Ty7cKfH1
     padding:4px; background:#c1c1c1;">
       <div class="toggle" style="cursor:pointer;font-size:15px;
       font-weight:bold; background:#e0e0e0; border:2px outset #fff;
-      padding:2px;">[+] gridiron-engine.io</div>
+      padding:2px;">[+] quantplay.io</div>
       <div class="content" style="display:none;background:#fff;
       border:2px inset #000;padding:6px;margin-top:4px;">
         Quantitative NFL parlay selection engine.
-        <a href="https://github.com/danielzh310/gridiron-engine.io"
+        <a href="https://github.com/danielzh310/quantplay.io/tree/main"
         target="_blank">View on GitHub</a>
       </div>
     </div>
@@ -520,4 +520,3 @@ document.addEventListener("click", function(e) {
       (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
-
