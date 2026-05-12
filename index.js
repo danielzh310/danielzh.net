@@ -8,7 +8,8 @@ const WALLPAPER_COLORS = [
 ];
 
 function setRandomWallpaper() {
-  const c = WALLPAPER_COLORS[Math.floor(Math.random() * WALLPAPER_COLORS.length)];
+  const c =
+    WALLPAPER_COLORS[Math.floor(Math.random() * WALLPAPER_COLORS.length)];
   document.querySelector(".desktop").style.background = c;
 }
 
@@ -19,7 +20,10 @@ function nextZ() { return ++zCounter; }
 function nowClock() {
   const el = document.getElementById("clock");
   const t = new Date();
-  el.textContent = t.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  el.textContent = t.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
 setInterval(nowClock, 1000);
 
@@ -29,11 +33,12 @@ const APP_DEFS = {
     title: "My Computer",
     icon: "public/icons/my-computer.ico",
     html: `
-      <p>I built this Windows 95 inspired website over a week in August 2025. 
-      Thought it would be funny taking inspiration from <a target="_blank" 
-      href="https://lankinen.xyz/my-computer">Elias Lankinen's</a> site but 
-      recode everything in HTML, CSS, and JavaScript. This site is intentionally 
-      simple and serves purely as a visual way to showcase a bit about myself. </p>
+      <p>I built this Windows 95 inspired website over a week in August 2025.
+      Thought it would be funny taking inspiration from <a target="_blank"
+      href="https://lankinen.xyz/my-computer">Elias Lankinen's</a> site but
+      recode everything in HTML, CSS, and JavaScript. This site is
+      intentionally simple and serves purely as a visual way to showcase a bit
+      about myself. </p>
       The code is available on my
       <a target="_blank" href="https://github.com/danielzh310">GitHub</a>.
       </p>
@@ -43,21 +48,30 @@ const APP_DEFS = {
     title: "Daniel",
     icon: "public/icons/agent.ico",
     html: `
-      <p>I am currently studying for a master's degree in Data Analytics at Carnegie Mellon University but
-      I also work as a software integration engineer at <a target="_blank" href="https://www.northropgrumman.com/">Northrop Grumman</a>. 
-      Outside of work, I spent my undergraduate years building driverless electric 
-      FSAE racecars — and now I program satellites for a living.</p>
-      <p>I love data science and am currently diving into other areas that excite me; network engineering, 
-      quantitative finance, autonomous vehicles, and space startups.</p>
+      <p>I earned both my bachelor's and master's degrees from Carnegie Mellon
+      University, where I studied statistics, data science, and analytics.
+      Professionally, I've worked as a
+      software integration engineer at
+      <a target="_blank" href="https://www.northropgrumman.com/">Northrop
+      Grumman</a> and now work in technical engineering at
+      <a target="_blank" href="https://www.ibm.com/">IBM</a>. Outside of work,
+      I spent my undergraduate years building driverless electric FSAE
+      racecars — and now I program satellites for a living.</p>
+      <p>I love data science and am currently diving into other areas that
+      excite me; network engineering, sports analytics, autonomous vehicles,
+      and space startups.</p>
       <h2>Academic Background</h2>
-      <p>M.Sc. in Data Analytics for Science, Carnegie Mellon University (May 2026)</p>
-      <p>B.Sc. in Statistics and Data Science, Carnegie Mellon University (May 2024)</p>
+      <p>M.Sc. in Data Analytics for Science, Carnegie Mellon University
+      (May 2026)</p>
+      <p>B.Sc. in Statistics and Data Science, Carnegie Mellon University
+      (May 2024)</p>
     `,
   },
   "contact": {
     title: "Contact",
     icon: "public/icons/letter.ico",
-    html: `<p>Email me at <a href="mailto:danielzh310@gmail.com">danielzh310@gmail.com</a></p>
+    html: `<p>Email me at
+    <a href="mailto:danielzh310@gmail.com">danielzh310@gmail.com</a></p>
     <p>TO MAKE IT SECURE, USE THIS PGP PUBLIC KEY</p>
     <p>-----BEGIN PGP PUBLIC KEY BLOCK-----
 
@@ -114,89 +128,145 @@ Ty7cKfH1
     `,
   },
   "projects": {
-  title: "Projects",
-  icon: "public/icons/joy.ico",
-  html: `
+    title: "Projects",
+    icon: "public/icons/joy.ico",
+    html: `
     <h2 class="noselect">Selected Hobby Projects</h2>
-    
-    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
-      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] blurbable.com</div>
-      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
-        A career-focused social networking application where people share quick updates, funny work stories, and real human career moments, think LinkedIn, but without the corporate fluff. 
+
+    <div class="project-box" style="margin-top:8px; border:2px solid #000;
+    padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px;
+      font-weight:bold; background:#e0e0e0; border:2px outset #fff;
+      padding:2px;">[+] blurbable.com</div>
+      <div class="content" style="display:none;background:#fff;
+      border:2px inset #000;padding:6px;margin-top:4px;">
+        A career-focused social networking application where people share
+        quick updates, funny work stories, and real human career moments,
+        think LinkedIn, but without the corporate fluff.
         <a href="https://blurbable.com" target="_blank">Visit website</a>
       </div>
     </div>
 
-    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
-      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] gridiron-engine.io</div>
-      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
-        Quantitative NFL parlay selection engine. <a href="https://github.com/danielzh310/gridiron-engine.io" target="_blank">View on GitHub</a>
+    <div class="project-box" style="margin-top:8px; border:2px solid #000;
+    padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px;
+      font-weight:bold; background:#e0e0e0; border:2px outset #fff;
+      padding:2px;">[+] gridiron-engine.io</div>
+      <div class="content" style="display:none;background:#fff;
+      border:2px inset #000;padding:6px;margin-top:4px;">
+        Quantitative NFL parlay selection engine.
+        <a href="https://github.com/danielzh310/gridiron-engine.io"
+        target="_blank">View on GitHub</a>
       </div>
     </div>
 
-    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
-      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] Carnegie Mellon Racing (2020-2024)</div>
-      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+    <div class="project-box" style="margin-top:8px; border:2px solid #000;
+    padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px;
+      font-weight:bold; background:#e0e0e0; border:2px outset #fff;
+      padding:2px;">[+] Carnegie Mellon Racing (2020-2024)</div>
+      <div class="content" style="display:none;background:#fff;
+      border:2px inset #000;padding:6px;margin-top:4px;">
 
-      <p><strong>Aerodynamics & Composites System Lead (2024):</strong> I led aerodynamics and composites research, worked on CFD and FEA results to design more aerodynamically optimized parts, selected materials for layups, and pretty much built a majority of the aerodynamics package for CMR 24e.</p>
-    
-      <p><strong>Driver Interface System Engineer (2024):</strong> Designed and built a dashboard for CMR 24e, integrated conceptual driver interface housings for better usability, connectivity and just trying to make the drivers' lives a little less stressful in the cockpit.</p>
+      <p><strong>Aerodynamics & Composites System Lead (2024):</strong> I led
+      aerodynamics and composites research, worked on CFD and FEA results to
+      design more aerodynamically optimized parts, selected materials for
+      layups, and pretty much built a majority of the aerodynamics package for
+      CMR 24e.</p>
 
-      <p><strong>Vehicle Dynamics Data Analyst (2023):</strong> Oversaw vehicle dynamics testing and analyzed CMR 23e's vehicle data to see where we could make design improvements, led on-track validation of aerodynamic performance, and also spun up a training regime for better coordination of real-time adjustments with cross-functional teams during high stress environments like competition.</p>
+      <p><strong>Driver Interface System Engineer (2024):</strong> Designed and
+      built a dashboard for CMR 24e, integrated conceptual driver interface
+      housings for better usability, connectivity and just trying to make the
+      drivers' lives a little less stressful in the cockpit.</p>
 
-      <p><strong>Autonomous Vehicle Software Testing Engineer (2022-2023):</strong> Developed Python-based machine learning models to support autonomy testing and data analytics workflows, made improvements to cone box prediction performance and enabling deeper in-house data pipeline validation during testing cycles.</p>
-    
-      <p><strong>Vice President of Marketing & Outreach (2021-2023):</strong> I started on the team as a business student, joined the team on the premise of improving outreaching efforts; ended up building up a substantial marking department-producing crowdfunding campaigns, designing limited edition merchandise drops, grew recruitment pipelines across campus organizations, and built up the CMR brand on campus to something other than being known as a nerdy engineering club but as a powerhouse race team that ranked 1st in the nation and 8th in the world during my tenure.</p>
+      <p><strong>Vehicle Dynamics Data Analyst (2023):</strong> Oversaw vehicle
+      dynamics testing and analyzed CMR 23e's vehicle data to see where we
+      could make design improvements, led on-track validation of aerodynamic
+      performance, and also spun up a training regime for better coordination
+      of real-time adjustments with cross-functional teams during high stress
+      environments like competition.</p>
+
+      <p><strong>Autonomous Vehicle Software Testing Engineer
+      (2022-2023):</strong> Developed Python-based machine learning models to
+      support autonomy testing and data analytics workflows, made improvements
+      to cone box prediction performance and enabling deeper in-house data
+      pipeline validation during testing cycles.</p>
+
+      <p><strong>Vice President of Marketing & Outreach (2021-2023):</strong> I
+      started on the team as a business student, joined the team on the
+      premise of improving outreaching efforts; ended up building up a
+      substantial marking department-producing crowdfunding campaigns,
+      designing limited edition merchandise drops, grew recruitment pipelines
+      across campus organizations, and built up the CMR brand on campus to
+      something other than being known as a nerdy engineering club but as a
+      powerhouse race team that ranked 1st in the nation and 8th in the world
+      during my tenure.</p>
 
     </div>
-</div>
+    </div>
 
     <!--
-    <div class="project-box" style="margin-top:8px; border:2px solid #000; padding:4px; background:#c1c1c1;">
-      <div class="toggle" style="cursor:pointer;font-size:15px; font-weight:bold; background:#e0e0e0; border:2px outset #fff; padding:2px;">[+] project-name</div>
-      <div class="content" style="display:none;background:#fff;border:2px inset #000;padding:6px;margin-top:4px;">
+    <div class="project-box" style="margin-top:8px; border:2px solid #000;
+    padding:4px; background:#c1c1c1;">
+      <div class="toggle" style="cursor:pointer;font-size:15px;
+      font-weight:bold; background:#e0e0e0; border:2px outset #fff;
+      padding:2px;">[+] project-name</div>
+      <div class="content" style="display:none;background:#fff;
+      border:2px inset #000;padding:6px;margin-top:4px;">
         Description and link here.
       </div>
     </div>
     -->
-  `
-},
+  `,
+  },
   "history": {
     title: "History",
     icon: "public/icons/help-book.ico",
     html: `
       <h2 class="noselect">Timeline</h2>
       <ul style="list-style:disc;padding-left:20px;margin-top:8px;">
-       <li><b>2015 - 2020:</b> Instrumental Music - Clarinet, Orange County School of the Arts</li>
-       <li><b>2020 - 2024:</b> B.Sc. in Statistics & Data Science, Carnegie Mellon University</li>
-       <li><b>2024 - 2025:</b> Network Engineer @ Northrop Grumman (Morrisville, NC)</li>
-       <li><b>2025 - 2026:</b> M.Sc. in Data Analytics for Science, Carnegie Mellon University</li>
-       <li><b>2026 - Present:</b> Federal Deployment Engineer @ IBM (Austin, TX)</li>
+       <li><b>2015 - 2020:</b> Instrumental Music - Clarinet, Orange County
+       School of the Arts</li>
+       <li><b>2020 - 2024:</b> B.Sc. in Statistics & Data Science, Carnegie
+       Mellon University</li>
+       <li><b>2024 - 2025:</b> Network Engineer @ Northrop Grumman
+       (Morrisville, NC)</li>
+       <li><b>2025 - 2026:</b> M.Sc. in Data Analytics for Science, Carnegie
+       Mellon University</li>
+       <li><b>2026 - Present:</b> Federal Deployment Engineer @ IBM
+       (Austin, TX)</li>
      </ul>
-  `
-},
+  `,
+  },
   "network": {
     title: "Network",
     icon: "public/icons/network.ico",
-    html: `<p><a href="https://www.linkedin.com/in/daniel-zhu-43a080213/" target="_blank">Visit my LinkedIn</a></p>`,
+    html: `<p><a href="https://www.linkedin.com/in/daniel-zhu-43a080213/"
+    target="_blank">Visit my LinkedIn</a></p>`,
   },
   "github": {
     title: "GitHub",
     icon: "public/icons/starfield.ico",
-    html: `<p><a href="https://github.com/danielzh310" target="_blank">Visit my GitHub</a></p>`,
+    html: `<p><a href="https://github.com/danielzh310"
+    target="_blank">Visit my GitHub</a></p>`,
   },
   "fake-cli": {
     title: "Command Prompt",
     icon: "public/icons/AOL.ico",
     html: `
-      <div id="cli-terminal" style="font-family:'Courier New', monospace; font-size:13px; color:#0f0; background:#000; padding:8px; height:100%; overflow-y:auto; display:flex; flex-direction:column;">
+      <div id="cli-terminal" style="font-family:'Courier New', monospace;
+      font-size:13px; color:#0f0; background:#000; padding:8px; height:100%;
+      overflow-y:auto; display:flex; flex-direction:column;">
         <div id="cli-output"></div>
-        <div style="display:flex; font-family:'Courier New', monospace; font-size:13px; color:#0f0;">
+        <div style="display:flex; font-family:'Courier New', monospace;
+        font-size:13px; color:#0f0;">
           <span id="cli-prompt">C:\\Users\\Guest&gt; </span>
-          <input type="text" id="cli-input" style="background:black; border:none; color:#0f0; outline:none; flex:1; font-family:'Courier New', monospace; font-size:13px; color:#0f0;">
+          <input type="text" id="cli-input" style="background:black;
+          border:none; color:#0f0; outline:none; flex:1;
+          font-family:'Courier New', monospace; font-size:13px; color:#0f0;">
         </div>
       </div>
-    `
+    `,
   }
 };
 
@@ -205,48 +275,57 @@ const windowsRoot = document.getElementById("windows-root");
 const tabsRoot = document.getElementById("task-tabs");
 const openWindows = new Map();
 
-function focusWindow(key){
+function focusWindow(key) {
   const item = openWindows.get(key);
-  if(!item) return;
+  if (!item) return;
 
   item.el.style.zIndex = nextZ();
 
-  document.querySelectorAll(".titlebar").forEach(tb => tb.classList.remove("active"));
-  document.querySelectorAll(".titlebar").forEach(tb => tb.classList.add("inactive"));
+  document
+    .querySelectorAll(".titlebar")
+    .forEach((tb) => tb.classList.remove("active"));
+  document
+    .querySelectorAll(".titlebar")
+    .forEach((tb) => tb.classList.add("inactive"));
   item.el.querySelector(".titlebar").classList.remove("inactive");
   item.el.querySelector(".titlebar").classList.add("active");
 
-  document.querySelectorAll(".task-tab").forEach(t => t.classList.remove("active"));
+  document
+    .querySelectorAll(".task-tab")
+    .forEach((t) => t.classList.remove("active"));
   item.tab.classList.add("active");
 
   // Focus CLI input automatically
   const cliInput = document.getElementById("cli-input");
-  if(cliInput) cliInput.focus();
+  if (cliInput) cliInput.focus();
 }
 
-function minimizeWindow(key){
+function minimizeWindow(key) {
   const item = openWindows.get(key);
-  if(!item) return;
+  if (!item) return;
   item.el.style.display = "none";
   item.tab.classList.remove("active");
 }
 
-function closeWindow(key){
+function closeWindow(key) {
   const item = openWindows.get(key);
-  if(!item) return;
+  if (!item) return;
   item.el.remove();
   item.tab.remove();
   openWindows.delete(key);
 }
 
-function createTab(key, title, icon){
+function createTab(key, title, icon) {
   const tab = document.createElement("button");
   tab.className = "task-tab";
-  tab.innerHTML = `<img src="${icon}" type="image/x-icon" alt=""><span>${title}</span>`;
+  tab.innerHTML = `
+    <img src="${icon}" type="image/x-icon" alt="">
+    <span>${title}</span>
+  `;
   tab.addEventListener("click", () => {
     const w = openWindows.get(key);
-    if(!w) return;
-    if(w.el.style.display === "none"){
+    if (!w) return;
+    if (w.el.style.display === "none") {
       w.el.style.display = "block";
     }
     focusWindow(key);
@@ -255,11 +334,11 @@ function createTab(key, title, icon){
   return tab;
 }
 
-function createWindow(key, def){
+function createWindow(key, def) {
   const win = document.createElement("div");
   win.className = "window";
   win.style.left = `${120 + (openWindows.size * 40)}px`;
-  win.style.top  = `${90  + (openWindows.size * 40)}px`;
+  win.style.top = `${90 + (openWindows.size * 40)}px`;
   win.style.zIndex = nextZ();
 
   win.innerHTML = `
@@ -270,12 +349,22 @@ function createWindow(key, def){
           <p class="title">${def.title}</p>
         </div>
         <div class="winbtns">
-          <button class="winbtn btn-min"><img src="public/icons/hide-window.ico" type="image/x-icon" alt=""></button>
-          <button class="winbtn btn-max"><img src="public/icons/full-screen.ico" type="image/x-icon" alt=""></button>
-          <button class="winbtn btn-close"><img src="public/icons/cross.ico" type="image/x-icon" alt=""></button>
+          <button class="winbtn btn-min">
+            <img src="public/icons/hide-window.ico" type="image/x-icon" alt="">
+          </button>
+          <button class="winbtn btn-max">
+            <img src="public/icons/full-screen.ico" type="image/x-icon" alt="">
+          </button>
+          <button class="winbtn btn-close">
+            <img src="public/icons/cross.ico" type="image/x-icon" alt="">
+          </button>
         </div>
       </div>
-      <div class="menubar"><span>File</span><span>Edit</span><span>View</span></div>
+      <div class="menubar">
+        <span>File</span>
+        <span>Edit</span>
+        <span>View</span>
+      </div>
       <div class="window-body">
         <div class="window-inner">${def.html}</div>
       </div>
@@ -283,19 +372,25 @@ function createWindow(key, def){
   `;
 
   const titlebar = win.querySelector(".titlebar");
-  let dragging = false, startX=0, startY=0, startLeft=0, startTop=0;
+  let dragging = false;
+  let startX = 0;
+  let startY = 0;
+  let startLeft = 0;
+  let startTop = 0;
 
   const onDown = (e) => {
     dragging = true;
     focusWindow(key);
     const rect = win.getBoundingClientRect();
-    startLeft = rect.left; startTop = rect.top;
-    startX = e.clientX; startY = e.clientY;
+    startLeft = rect.left;
+    startTop = rect.top;
+    startX = e.clientX;
+    startY = e.clientY;
     document.addEventListener("mousemove", onMove);
     document.addEventListener("mouseup", onUp);
   };
   const onMove = (e) => {
-    if(!dragging) return;
+    if (!dragging) return;
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     let nx = startLeft + dx;
@@ -305,7 +400,7 @@ function createWindow(key, def){
     nx = Math.max(0, Math.min(nx, maxX));
     ny = Math.max(0, Math.min(ny, maxY));
     win.style.left = nx + "px";
-    win.style.top  = ny + "px";
+    win.style.top = ny + "px";
   };
   const onUp = () => {
     dragging = false;
@@ -316,21 +411,25 @@ function createWindow(key, def){
   titlebar.addEventListener("mousedown", onDown);
   win.addEventListener("mousedown", () => focusWindow(key));
 
-  win.querySelector(".btn-min").addEventListener("click", () => minimizeWindow(key));
-  win.querySelector(".btn-close").addEventListener("click", () => closeWindow(key));
+  win
+    .querySelector(".btn-min")
+    .addEventListener("click", () => minimizeWindow(key));
+  win
+    .querySelector(".btn-close")
+    .addEventListener("click", () => closeWindow(key));
   win.querySelector(".btn-max").addEventListener("click", () => {
-    if(win.dataset.max === "1"){
+    if (win.dataset.max === "1") {
       win.dataset.max = "0";
       win.style.left = "120px";
-      win.style.top  = "90px";
+      win.style.top = "90px";
       win.style.width = "700px";
-      win.style.height= "500px";
-    }else{
+      win.style.height = "500px";
+    } else {
       win.dataset.max = "1";
       win.style.left = "0px";
-      win.style.top  = "0px";
+      win.style.top = "0px";
       win.style.width = window.innerWidth + "px";
-      win.style.height= (window.innerHeight - 32) + "px";
+      win.style.height = (window.innerHeight - 32) + "px";
     }
     focusWindow(key);
   });
@@ -339,11 +438,11 @@ function createWindow(key, def){
   return win;
 }
 
-function openApp(key){
+function openApp(key) {
   const def = APP_DEFS[key];
-  if(!def) return;
+  if (!def) return;
 
-  if(openWindows.has(key)){
+  if (openWindows.has(key)) {
     const it = openWindows.get(key);
     it.el.style.display = "block";
     focusWindow(key);
@@ -376,11 +475,11 @@ document.querySelector(".start-btn").addEventListener("click", () => {
 /* CLI Terminal Interaction */
 document.addEventListener("keydown", (e) => {
   const cliInput = document.getElementById("cli-input");
-  if(!cliInput) return;
+  if (!cliInput) return;
 
-  if(e.key === "Enter" && document.activeElement === cliInput) {
+  if (e.key === "Enter" && document.activeElement === cliInput) {
     const value = cliInput.value.trim();
-    if(value === "") return;
+    if (value === "") return;
 
     const outputDiv = document.getElementById("cli-output");
     const prompt = document.getElementById("cli-prompt").textContent;
@@ -408,22 +507,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* Attach dropdown behavior for Projects window */
-document.addEventListener("click", function(e){
-  if(e.target.classList.contains("toggle")){
+document.addEventListener("click", function(e) {
+  if (e.target.classList.contains("toggle")) {
     const body = e.target.nextElementSibling;
     const isOpen = body.style.display === "block";
     body.style.display = isOpen ? "none" : "block";
 
     // Preserve full title and just swap `[+]` / `[-]`
-    e.target.dataset.name = e.target.dataset.name || e.target.textContent.slice(4).trim();
-    e.target.textContent = (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
+    e.target.dataset.name =
+      e.target.dataset.name || e.target.textContent.slice(4).trim();
+    e.target.textContent =
+      (isOpen ? "[+]" : "[-]") + " " + e.target.dataset.name;
   }
 });
-
-
-
-
-
-
-
 
