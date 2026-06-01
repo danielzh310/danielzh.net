@@ -233,6 +233,8 @@ Ty7cKfH1
        (Morrisville, NC)</li>
        <li><b>2025 - 2026:</b> M.Sc. in Data Analytics for Science, Carnegie
        Mellon University</li>
+       <li><b>2025 - 2026:</b> Software Engineer @ Northrop Grumman
+       (Pittsburgh, PA)</li>
        <li><b>2026 - Present:</b> Federal Deployment Engineer @ IBM
        (Austin, TX)</li>
      </ul>
