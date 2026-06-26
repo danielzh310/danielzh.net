@@ -56,7 +56,7 @@ const APP_DEFS = {
       Grumman</a> and now work in technical engineering at
       <a target="_blank" href="https://www.ibm.com/">IBM</a>. Outside of work,
       I spent my undergraduate years building driverless electric FSAE
-      racecars — and now I program satellites for a living.</p>
+      racecars — and now I build enterprise software for a living.</p>
       <p>I love data science and am currently diving into other areas that
       excite me; network engineering, sports analytics, autonomous vehicles,
       and space startups.</p>
