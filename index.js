@@ -277,6 +277,7 @@ const windowsRoot = document.getElementById("windows-root");
 const tabsRoot = document.getElementById("task-tabs");
 const openWindows = new Map();
 const desktop = document.getElementById("desktop");
+const resizedBounds = new WeakMap();
 
 // Android browser bars, the keyboard, and zoom can change the visible area
 // without changing the layout viewport used by fixed-position elements.
@@ -333,8 +334,58 @@ function fitWindow(win, bounds) {
 // Refit even minimized windows when rotating a phone or resizing the desktop.
 new ResizeObserver(() => {
   let index = 0;
-  openWindows.forEach(({ el }) => fitWindow(el, defaultWindowBounds(index++)));
+  openWindows.forEach(({ el }) => {
+    const defaults = defaultWindowBounds(index++);
+    fitWindow(el, desktop.clientWidth > 600 ? resizedBounds.get(el) || defaults : defaults);
+  });
 }).observe(desktop);
+
+function addResizeHandles(win, key) {
+  for (const direction of ["n", "s", "e", "w", "ne", "nw", "se", "sw"]) {
+    const handle = document.createElement("div");
+    handle.className = `resize-handle resize-${direction}`;
+    handle.setAttribute("aria-hidden", "true");
+    let start;
+
+    handle.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || !event.isPrimary || win.dataset.max === "1") return;
+      event.preventDefault();
+      focusWindow(key);
+      start = { ...windowBounds(win), x: event.clientX, y: event.clientY, pointerId: event.pointerId };
+      handle.setPointerCapture(event.pointerId);
+    });
+    handle.addEventListener("pointermove", (event) => {
+      if (!start || event.pointerId !== start.pointerId) return;
+      const dx = event.clientX - start.x;
+      const dy = event.clientY - start.y;
+      const maxWidth = desktop.clientWidth - 16;
+      const maxHeight = desktop.clientHeight - 16;
+      const minWidth = Math.min(280, maxWidth);
+      const minHeight = Math.min(160, maxHeight);
+      const clamp = (value, min, max) => Math.max(min, Math.min(value, max));
+      let { left, top, width, height } = start;
+      const right = left + width;
+      const bottom = top + height;
+      if (direction.includes("e")) width = clamp(width + dx, minWidth, Math.min(maxWidth, desktop.clientWidth - left));
+      if (direction.includes("s")) height = clamp(height + dy, minHeight, Math.min(maxHeight, desktop.clientHeight - top));
+      if (direction.includes("w")) {
+        left = clamp(left + dx, Math.max(0, right - maxWidth), right - minWidth);
+        width = right - left;
+      }
+      if (direction.includes("n")) {
+        top = clamp(top + dy, Math.max(0, bottom - maxHeight), bottom - minHeight);
+        height = bottom - top;
+      }
+      fitWindow(win, { left, top, width, height });
+      resizedBounds.set(win, windowBounds(win));
+    });
+    const stop = () => { start = null; };
+    handle.addEventListener("pointerup", stop);
+    handle.addEventListener("pointercancel", stop);
+    handle.addEventListener("lostpointercapture", stop);
+    win.appendChild(handle);
+  }
+}
 
 function focusWindow(key) {
   const item = openWindows.get(key);
@@ -462,6 +513,7 @@ function createWindow(key, def) {
     ny = Math.max(0, Math.min(ny, maxY));
     win.style.left = nx + "px";
     win.style.top = ny + "px";
+    if (resizedBounds.has(win)) resizedBounds.set(win, windowBounds(win));
   };
   const onUp = () => {
     dragging = false;
@@ -496,6 +548,7 @@ function createWindow(key, def) {
     focusWindow(key);
   });
 
+  addResizeHandles(win, key);
   windowsRoot.appendChild(win);
   return win;
 }

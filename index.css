@@ -231,6 +231,27 @@ body{
 
 .noselect{ user-select:none; }
 
+/* Resize along the existing beveled borders, as on a desktop window. */
+.resize-handle{display:none;}
+@media (min-width:601px) and (hover:hover) and (pointer:fine){
+  .window:not([data-max="1"]) .resize-handle{
+    display:block; position:absolute; z-index:2; touch-action:none; user-select:none;
+  }
+  .resize-n,.resize-s{left:8px; right:8px; height:5px; cursor:ns-resize;}
+  .resize-n{top:0;}
+  .resize-s{bottom:0;}
+  .resize-e,.resize-w{top:8px; bottom:8px; width:5px; cursor:ew-resize;}
+  .resize-e{right:0;}
+  .resize-w{left:0;}
+  .resize-ne,.resize-nw,.resize-se,.resize-sw{width:9px; height:9px;}
+  .resize-ne,.resize-sw{cursor:nesw-resize;}
+  .resize-nw,.resize-se{cursor:nwse-resize;}
+  .resize-ne{top:0; right:0;}
+  .resize-nw{top:0; left:0;}
+  .resize-se{bottom:0; right:0;}
+  .resize-sw{bottom:0; left:0;}
+}
+
 /* Keep the desktop chrome, with room for fingers and small screens. */
 @media (max-width: 600px), (pointer: coarse){
   :root{--taskbar-height:44px;}
