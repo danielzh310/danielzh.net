@@ -276,6 +276,44 @@ Ty7cKfH1
 const windowsRoot = document.getElementById("windows-root");
 const tabsRoot = document.getElementById("task-tabs");
 const openWindows = new Map();
+const desktop = document.getElementById("desktop");
+
+function defaultWindowBounds(index = 0) {
+  const width = desktop.clientWidth;
+  const height = desktop.clientHeight;
+  const compact = width <= 600;
+  const top = compact ? Math.min(156, Math.max(8, height - 240)) : 90 + index * 40;
+  return {
+    left: compact ? 8 : 120 + index * 40,
+    top,
+    width: Math.min(700, width - 16),
+    height: compact ? height - top - 8 : Math.min(500, height - 16),
+  };
+}
+
+function windowBounds(win) {
+  return Object.fromEntries(["left", "top", "width", "height"].map(
+    (name) => [name, parseFloat(win.style[name])]
+  ));
+}
+
+function fitWindow(win, bounds) {
+  const availableWidth = desktop.clientWidth;
+  const availableHeight = desktop.clientHeight;
+  const maximized = win.dataset.max === "1";
+  const width = maximized ? availableWidth : Math.max(1, Math.min(bounds.width, availableWidth - 16));
+  const height = maximized ? availableHeight : Math.max(1, Math.min(bounds.height, availableHeight - 16));
+  win.style.width = `${width}px`;
+  win.style.height = `${height}px`;
+  win.style.left = `${maximized ? 0 : Math.max(0, Math.min(bounds.left, availableWidth - width))}px`;
+  win.style.top = `${maximized ? 0 : Math.max(0, Math.min(bounds.top, availableHeight - height))}px`;
+}
+
+// Refit even minimized windows when rotating a phone or resizing the desktop.
+new ResizeObserver(() => {
+  let index = 0;
+  openWindows.forEach(({ el }) => fitWindow(el, defaultWindowBounds(index++)));
+}).observe(desktop);
 
 function focusWindow(key) {
   const item = openWindows.get(key);
@@ -298,8 +336,10 @@ function focusWindow(key) {
   item.tab.classList.add("active");
 
   // Focus CLI input automatically
-  const cliInput = document.getElementById("cli-input");
-  if (cliInput) cliInput.focus();
+  const cliInput = item.el.querySelector("#cli-input");
+  if (cliInput && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    cliInput.focus({ preventScroll: true });
+  }
 }
 
 function minimizeWindow(key) {
@@ -339,8 +379,7 @@ function createTab(key, title, icon) {
 function createWindow(key, def) {
   const win = document.createElement("div");
   win.className = "window";
-  win.style.left = `${120 + (openWindows.size * 40)}px`;
-  win.style.top = `${90 + (openWindows.size * 40)}px`;
+  fitWindow(win, defaultWindowBounds(openWindows.size));
   win.style.zIndex = nextZ();
 
   win.innerHTML = `
@@ -351,13 +390,13 @@ function createWindow(key, def) {
           <p class="title">${def.title}</p>
         </div>
         <div class="winbtns">
-          <button class="winbtn btn-min">
+          <button class="winbtn btn-min" aria-label="Minimize window">
             <img src="public/icons/hide-window.ico" type="image/x-icon" alt="">
           </button>
-          <button class="winbtn btn-max">
+          <button class="winbtn btn-max" aria-label="Maximize window">
             <img src="public/icons/full-screen.ico" type="image/x-icon" alt="">
           </button>
-          <button class="winbtn btn-close">
+          <button class="winbtn btn-close" aria-label="Close window">
             <img src="public/icons/cross.ico" type="image/x-icon" alt="">
           </button>
         </div>
@@ -381,15 +420,14 @@ function createWindow(key, def) {
   let startTop = 0;
 
   const onDown = (e) => {
+    if (e.target.closest("button") || win.dataset.max === "1" || !e.isPrimary || e.button !== 0) return;
     dragging = true;
     focusWindow(key);
-    const rect = win.getBoundingClientRect();
-    startLeft = rect.left;
-    startTop = rect.top;
+    startLeft = parseFloat(win.style.left);
+    startTop = parseFloat(win.style.top);
     startX = e.clientX;
     startY = e.clientY;
-    document.addEventListener("mousemove", onMove);
-    document.addEventListener("mouseup", onUp);
+    titlebar.setPointerCapture(e.pointerId);
   };
   const onMove = (e) => {
     if (!dragging) return;
@@ -397,8 +435,8 @@ function createWindow(key, def) {
     const dy = e.clientY - startY;
     let nx = startLeft + dx;
     let ny = startTop + dy;
-    const maxX = window.innerWidth - win.offsetWidth;
-    const maxY = window.innerHeight - 32 - win.offsetHeight;
+    const maxX = desktop.clientWidth - win.offsetWidth;
+    const maxY = desktop.clientHeight - win.offsetHeight;
     nx = Math.max(0, Math.min(nx, maxX));
     ny = Math.max(0, Math.min(ny, maxY));
     win.style.left = nx + "px";
@@ -406,12 +444,14 @@ function createWindow(key, def) {
   };
   const onUp = () => {
     dragging = false;
-    document.removeEventListener("mousemove", onMove);
-    document.removeEventListener("mouseup", onUp);
   };
 
-  titlebar.addEventListener("mousedown", onDown);
-  win.addEventListener("mousedown", () => focusWindow(key));
+  titlebar.addEventListener("pointerdown", onDown);
+  titlebar.addEventListener("pointermove", onMove);
+  titlebar.addEventListener("pointerup", onUp);
+  titlebar.addEventListener("pointercancel", onUp);
+  titlebar.addEventListener("lostpointercapture", onUp);
+  win.addEventListener("pointerdown", () => focusWindow(key));
 
   win
     .querySelector(".btn-min")
@@ -419,19 +459,18 @@ function createWindow(key, def) {
   win
     .querySelector(".btn-close")
     .addEventListener("click", () => closeWindow(key));
-  win.querySelector(".btn-max").addEventListener("click", () => {
+  let restoreBounds;
+  const maximizeButton = win.querySelector(".btn-max");
+  maximizeButton.addEventListener("click", () => {
     if (win.dataset.max === "1") {
       win.dataset.max = "0";
-      win.style.left = "120px";
-      win.style.top = "90px";
-      win.style.width = "700px";
-      win.style.height = "500px";
+      fitWindow(win, restoreBounds || defaultWindowBounds());
+      maximizeButton.setAttribute("aria-label", "Maximize window");
     } else {
+      restoreBounds = windowBounds(win);
       win.dataset.max = "1";
-      win.style.left = "0px";
-      win.style.top = "0px";
-      win.style.width = window.innerWidth + "px";
-      win.style.height = (window.innerHeight - 32) + "px";
+      fitWindow(win, restoreBounds);
+      maximizeButton.setAttribute("aria-label", "Restore window");
     }
     focusWindow(key);
   });

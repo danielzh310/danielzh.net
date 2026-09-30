@@ -1,5 +1,6 @@
 /*  Base + Desktop  */
 :root{
+  --taskbar-height: 32px;
   --win95-bg: #c1c1c1;
   --title-active: #0b4fa2;
   --title-inactive: #808080;
@@ -21,7 +22,9 @@ body{
 }
 
 .desktop{
-  position:fixed; inset:0 0 32px 0;
+  position:fixed; left:0; right:0; top:0;
+  height:calc(100vh - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
+  height:calc(100dvh - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
   display:block;
   background:#008080;
 }
@@ -30,14 +33,18 @@ body{
   position:absolute; left:10px; top:6px;
   display:flex; flex-direction:column;
   gap:18px; list-style:none; margin:0; padding:0;
+  flex-wrap:wrap; max-height:calc(100% - 28px); column-gap:20px;
 }
+
+.icon-column li{margin-bottom:8px; cursor:pointer; width:64px; text-align:center; font-size:12px;}
+.icon-column img{width:32px; height:32px; display:block; margin:0 auto 4px;}
 
 .icon{
   width:72px; height:64px;
   display:flex; flex-direction:column; align-items:center; gap:6px;
   cursor:default; user-select:none;
 }
-.icon img{ width:28px; height:28px; image-rendering: pixelated; }
+.icon img{ width:32px; height:32px; image-rendering: pixelated; }
 
 /* default */
 .icon p{
@@ -96,7 +103,11 @@ body{
 .titlebar{
   height:24px; display:flex; align-items:center; justify-content:space-between;
   padding:0 6px; gap:8px; user-select:none; cursor:move;
+  touch-action:none;
 }
+.titlebar .left{min-width:0;}
+.titlebar .title{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.titlebar img,.winbtns{flex-shrink:0;}
 .titlebar.inactive{ background:var(--title-inactive); }
 .titlebar.active  { background:var(--title-active); }
 .titlebar .left{display:flex; align-items:center; gap:6px;}
@@ -121,6 +132,7 @@ body{
   height:100%; overflow:auto; padding:8px 10px;
   border-top:1px solid #000; border-left:1px solid #000;
   border-right:1px solid #9c9c9c; border-bottom:1px solid #9c9c9c;
+  overflow-wrap:anywhere;
 }
 
 .winbtns{ display:flex; align-items:center; gap:4px; }
@@ -139,12 +151,18 @@ body{
 
 /*  Taskbar  */
 .taskbar{
-  position:fixed; left:0; right:0; bottom:0; height:32px;
+  position:fixed; left:0; right:0; bottom:0;
+  height:calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
+  z-index:2147483647;
   background:var(--win95-bg);
   display:flex; align-items:center; gap:6px; padding:2px 6px;
   border-top:2px solid #fff;
   box-shadow: inset 0 1px 0 #9c9c9c;
+  padding-bottom:calc(2px + env(safe-area-inset-bottom, 0px));
+  padding-left:max(6px, env(safe-area-inset-left, 0px));
+  padding-right:max(6px, env(safe-area-inset-right, 0px));
 }
+.start-btn,.tray{flex-shrink:0;}
 
 .start-btn{
   display:inline-flex; align-items:center; gap:6px; height:26px; padding:0 10px;
@@ -166,6 +184,7 @@ body{
 
 .task-tabs{
   display:flex; flex:1 1 auto; align-items:center; gap:6px; overflow-x:auto; padding:2px 0;
+  min-width:0;
 }
 
 .task-tab{
@@ -174,6 +193,7 @@ body{
   border-left:2px solid #fff; border-top:2px solid #fff;
   border-right:2px solid #000; border-bottom:2px solid #000;
   box-shadow: 1px 1px 0 0 var(--tab-shadow);
+  flex-shrink:0;
 }
 .task-tab img{ width:16px; height:16px; image-rendering:pixelated; }
 .task-tab span{ white-space:nowrap; }
@@ -206,3 +226,34 @@ body{
 .window-inner a{ color:#1a5fb4; text-decoration:underline; }
 
 .noselect{ user-select:none; }
+
+/* Keep the desktop chrome, with room for fingers and small screens. */
+@media (max-width: 600px), (pointer: coarse){
+  :root{--taskbar-height:44px;}
+  .titlebar{height:38px; padding:0 4px; gap:4px;}
+  .winbtn{width:32px; height:32px;}
+  .window-body{top:60px;}
+  .start-btn,.task-tab{height:36px;}
+  .window-inner{font-size:15px; line-height:1.45;}
+  .project-box .toggle{min-height:36px; display:flex; align-items:center;}
+  #cli-input{min-width:0; font-size:16px !important;}
+}
+
+@media (max-width: 600px){
+  .icon-column{
+    left:max(8px, env(safe-area-inset-left, 0px));
+    right:max(8px, env(safe-area-inset-right, 0px)); top:8px;
+    display:grid; grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:6px 4px; max-height:none;
+  }
+  .icon-column li{width:100%; height:66px; margin:0; gap:2px;}
+  .icon-column img{margin-bottom:2px;}
+  .start-btn{padding:0 6px; gap:4px;}
+  .taskbar{gap:4px;}
+  .task-tabs{gap:4px; scrollbar-width:none;}
+  .task-tabs::-webkit-scrollbar{display:none;}
+  .task-tab{padding:0 8px; max-width:130px;}
+  .task-tab span{overflow:hidden; text-overflow:ellipsis;}
+  .tray-icon{display:none;}
+  .clock{padding:2px 4px; font-size:12px; min-width:0;}
+}
