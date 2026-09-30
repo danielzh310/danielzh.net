@@ -35,7 +35,7 @@ const APP_DEFS = {
     html: `
       <p>I built this Windows 95 inspired website over a week in August 2025.
       Thought it would be funny taking inspiration from <a target="_blank"
-      href="https://lankinen.xyz/my-computer">Elias Lankinen's</a> site but
+      href="https://lankinen.xyz/notes/3cb0cf74-c77d-80cd-8208-df95e171c460">Elias Lankinen's</a> site but
       recode everything in HTML, CSS, and JavaScript. This site is
       intentionally simple and serves purely as a visual way to showcase a bit
       about myself. </p>
