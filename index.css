@@ -22,9 +22,10 @@ body{
 }
 
 .desktop{
-  position:fixed; left:0; right:0; top:0;
+  position:fixed; left:var(--viewport-left, 0px); top:var(--viewport-top, 0px);
+  width:var(--viewport-width, 100%);
   height:calc(100vh - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
-  height:calc(100dvh - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
+  height:calc(var(--viewport-height, 100dvh) - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
   display:block;
   background:#008080;
 }
@@ -84,6 +85,7 @@ body{
 .window{
   position:absolute;
   width:700px; height:500px; background:var(--win95-bg);
+  max-width:100%; max-height:100%;
   border-left:1px solid var(--window-edge-light);
   border-top:1px solid var(--window-edge-light);
   border-right:2px solid var(--window-edge-dark);
@@ -151,7 +153,9 @@ body{
 
 /*  Taskbar  */
 .taskbar{
-  position:fixed; left:0; right:0; bottom:0;
+  position:fixed; left:var(--viewport-left, 0px); bottom:0;
+  width:var(--viewport-width, 100%);
+  top:calc(var(--viewport-top, 0px) + var(--viewport-height, 100dvh) - var(--taskbar-height) - env(safe-area-inset-bottom, 0px));
   height:calc(var(--taskbar-height) + env(safe-area-inset-bottom, 0px));
   z-index:2147483647;
   background:var(--win95-bg);
@@ -230,9 +234,9 @@ body{
 /* Keep the desktop chrome, with room for fingers and small screens. */
 @media (max-width: 600px), (pointer: coarse){
   :root{--taskbar-height:44px;}
-  .titlebar{height:38px; padding:0 4px; gap:4px;}
-  .winbtn{width:32px; height:32px;}
-  .window-body{top:60px;}
+  .titlebar{height:48px; padding:0 4px; gap:4px;}
+  .winbtn{width:44px; height:44px; padding:0;}
+  .window-body{top:70px;}
   .start-btn,.task-tab{height:36px;}
   .window-inner{font-size:15px; line-height:1.45;}
   .project-box .toggle{min-height:36px; display:flex; align-items:center;}

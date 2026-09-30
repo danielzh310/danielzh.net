@@ -278,6 +278,27 @@ const tabsRoot = document.getElementById("task-tabs");
 const openWindows = new Map();
 const desktop = document.getElementById("desktop");
 
+// Android browser bars, the keyboard, and zoom can change the visible area
+// without changing the layout viewport used by fixed-position elements.
+function syncViewport() {
+  const viewport = window.visualViewport;
+  const style = document.documentElement.style;
+  style.setProperty("--viewport-width", `${viewport ? viewport.width : window.innerWidth}px`);
+  style.setProperty("--viewport-height", `${viewport ? viewport.height : window.innerHeight}px`);
+  style.setProperty("--viewport-left", `${viewport ? viewport.offsetLeft : 0}px`);
+  style.setProperty("--viewport-top", `${viewport ? viewport.offsetTop : 0}px`);
+}
+
+let viewportFrame;
+function scheduleViewportSync() {
+  cancelAnimationFrame(viewportFrame);
+  viewportFrame = requestAnimationFrame(syncViewport);
+}
+window.addEventListener("resize", scheduleViewportSync);
+window.visualViewport?.addEventListener("resize", scheduleViewportSync);
+window.visualViewport?.addEventListener("scroll", scheduleViewportSync);
+syncViewport();
+
 function defaultWindowBounds(index = 0) {
   const width = desktop.clientWidth;
   const height = desktop.clientHeight;
